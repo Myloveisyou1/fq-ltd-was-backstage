@@ -25,7 +25,7 @@ public interface MenuMapper {
      * @return
      */
     @Select("select m.gid,m.menu_type menuType,m.icon,m.menu_name menuName,m.url,m.parent_code parentCode,m.`code`,m.belong,m.version,m.create_time createTime,m.update_time updateTime,m.`status`,p.project_name projectName " +
-            "from sys_menu m inner join sys_menu_role r on m.gid=r.menu_id inner JOIN project p on m.belong=p.gid and m.status=0 and r.role_id = #{roleId} order by m.gid")
+            "from sys_menu m inner join sys_menu_role r on m.gid=r.menu_id inner JOIN sys_project p on m.belong=p.gid and m.status=0 and r.role_id = #{roleId} order by m.gid")
     List<Menu> findMenuByRole(Long roleId);
 
     /**

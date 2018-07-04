@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
 
     <!-- 公共css+js -->
-    <script src="../static/js/common/base-css.js"></script>
-    <script src="../static/js/common/base-js.js"></script>
+    <script src="js/common/base-css.js"></script>
+    <script src="js/common/base-js.js"></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
                 <span class="x-red">*</span>角色名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="roleName" name="name" required="" lay-verify="required"
+                <input type="text" id="roleName" name="name" required=""
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <span class="x-red">*</span>英文名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="roleNameEn" name="name" required="" lay-verify="required"
+                <input type="text" id="roleNameEn" name="name" required=""
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -53,8 +53,7 @@
     </form>
 </div>
 
-<script type="text/javascript" src="../static/js/common/base-code.js"></script>
-<script type="text/javascript" src="../static/js/common/basic.js"></script>
+<script type="text/javascript" src="js/common/base-code.js"></script>
 <script>
     var roleName = "",roleId = "",roleNameEn = "",menusList = "",layer = "";
     layui.use(['layer'],function(){
@@ -199,7 +198,7 @@
      * 添加角色
      */
     function addRole() {
-        layer.load(2,{shade:0.3});
+
         var roleNames = $("#roleName").val();
         var roleNameEn = $("#roleNameEn").val();
         if(roleNames == "" || roleNameEn == "") {
@@ -220,14 +219,18 @@
                 nmenus += role[i].value+",";
             }
         }
+        if(menus.length == 0) {
+            layer.msg("请选择权限",{icon:5});
+            return;
+        }
 
+        layer.load(2,{shade:0.3});
         if (roleName != undefined && roleName != "") {
             $.ajax({
                 url:URL+"role/updateRoleMenu",
                 type:"get",
                 dataType:"json",
                 data:{
-                    sessionId:SESSIONID,
                     roleName:roleNames,
                     roleNameEn:roleNameEn,
                     ymenus:menus,
@@ -237,7 +240,7 @@
                     console.log(data);
                     if(data.code == 200) {
                         layer.msg("修改成功,请在角色列表查看",{icon:6,time:2000},function(){
-//                            parent.location.reload();
+                           parent.location.reload();
                         });
                     } else if (data.code == 209){
                         layer.msg(data.msg,{icon:2});
@@ -264,7 +267,6 @@
                 type:"get",
                 dataType:"json",
                 data:{
-                    sessionId:SESSIONID,
                     roleName:roleNames,
                     roleNameEn:roleNameEn,
                     menus:menus
@@ -273,7 +275,7 @@
                     console.log(data);
                     if(data.code == 200) {
                         layer.msg("添加成功,请在角色列表查看",{icon:6,time:2000},function(){
-                            //location.reload();
+                            location.reload();
                         });
                     } else if (data.code == 209){
                         layer.msg(data.msg,{icon:2});

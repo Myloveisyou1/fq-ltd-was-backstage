@@ -25,15 +25,16 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
+    <div class="layui-row self-back">
+        <form class="layui-form layui-col-md12 x-so form-sel">
             <input type="text" id="role_Name"  placeholder="请输入角色名" autocomplete="off" class="layui-input">
-            <button type="button" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon" onclick="findAllRole()">&#xe615;</i></button>
+            <button type="button" class="layui-btn layui-btn-normal" onclick="findAllRole()">搜索</button>
+            <!--<button type="button" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon" onclick="findAllRole()">&#xe615;</i></button>-->
         </form>
     </div>
     <xblock>
         <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-        <button class="layui-btn" onclick="addRole()"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加角色','role-add.html')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px" id="totalCount"></span>
     </xblock>
     <table class="layui-table" id="dataTable">
@@ -85,12 +86,9 @@
                 </tbody>
             </table>
         </div>
-        <!--<div class="layui-form-item" id="add">
-            <button type="button" class="layui-btn" lay-submit="" lay-filter="add" onclick="addRole(1)">增加角色</button>
-        </div>
         <div class="layui-form-item" id="edit" style="display: none">
             <button type="button" class="layui-btn" lay-submit="" lay-filter="add" onclick="addRole(2)">修改角色</button>
-        </div>-->
+        </div>
     </form>
 </div>
 
@@ -111,17 +109,15 @@
      * 查询角色信息
      **/
     function findRoleMenu(roleId) {
-
         $.ajax({
             url:URL+"role/findRoleById",
             type:"get",
             dataType:"json",
-            async:false,
             data:{
                 roleId:roleId
             },
             success:function(data){
-                //console.log(data);
+                console.log(data);
                 if(data.code == 200) {
                     menusList = data.data;
                     $("#roleName").val(roleName);
@@ -225,19 +221,19 @@
     /**
      * 添加角色**
      */
-    function addRole(obj) {
+    function addRole(obj,roleId) {
+        var title = "添加角色";
         if (obj == 2) {
+            title = "修改角色";
             //修改操作
-            $("#add").hide();
-            $("#edit").show();
             findRoleMenu(roleId);
         }
         layer.open({
             type:1,
-            title: '添加角色',
+            title: title,
             content: $("#addRole"),
             area: ['1000px', '700px'],
-            btn:['添加','取消'],
+            btn:['確定','取消'],
             yes: function (index,layero) {
                 var roleNames = $("#roleName").val();
                 var roleNameEn = $("#roleNameEn").val();
@@ -260,7 +256,7 @@
                     }
                 }
 
-                if (roleName != undefined && roleName != "") {
+                if (obj == 2) {
                     // layer.load(2,{shade:0.3});
                     $.ajax({
                         url:URL+"role/updateRoleMenu",
@@ -276,7 +272,7 @@
                             console.log(data);
                             if(data.code == 200) {
                                 layer.msg("修改成功,请在角色列表查看",{icon:6,time:2000},function(){
-//                            parent.location.reload();
+                                    parent.location.reload();
                                 });
                             } else if (data.code == 209){
                                 layer.msg(data.msg,{icon:2});
@@ -312,7 +308,7 @@
                             console.log(data);
                             if(data.code == 200) {
                                 layer.msg("添加成功,请在角色列表查看",{icon:6,time:2000},function(){
-                                    //location.reload();
+                                    location.reload();
                                 });
                             } else if (data.code == 209){
                                 layer.msg(data.msg,{icon:2});
@@ -463,7 +459,7 @@
                     } else {
                         html += '<tr><td colspan="100">暂无数据</td></tr>';
                     }
-                    $("#totalCount").html("共有数据："+data.totalCount+"条");
+                    // $("#totalCount").html("共有数据："+data.totalCount+"条");
                     $("#myTable").html(html);
                 } else if (data.code == 209){
                     parent.layer.msg(data.msg,{icon:2});

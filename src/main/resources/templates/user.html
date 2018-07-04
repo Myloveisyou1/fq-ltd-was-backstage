@@ -25,15 +25,16 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
+    <div class="layui-row self-back">
+        <form class="layui-form layui-col-md12 x-so form-sel">
             <input type="text" id="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-            <button type="button" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon" onclick="findAllUser()">&#xe615;</i></button>
+            <button type="button" class="layui-btn layui-btn-normal" onclick="findAllUser()">搜索</button>
+            <!--<button type="button" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon" onclick="findAllUser()">&#xe615;</i></button>-->
         </form>
     </div>
     <xblock>
         <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-        <button class="layui-btn" onclick="addUser()"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','user-add.html')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px" id="totalCount"></span>
     </xblock>
     <table class="layui-table">

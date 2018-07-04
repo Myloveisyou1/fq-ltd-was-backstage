@@ -135,6 +135,16 @@ public class IndexController {
         return "/user";
     }
 
+    @GetMapping(value = "/user-add")
+    public String userAdd() {
+        return "/user-add";
+    }
+
+    @GetMapping(value = "/user-info")
+    public String userInfo() {
+        return "/user-info";
+    }
+
     /**
      * 角色
      * @return
@@ -143,6 +153,12 @@ public class IndexController {
     public String role() {
         return "/role";
     }
+
+    @GetMapping(value = "/role-add")
+    public String roleAdd() {
+        return "/role-add";
+    }
+
 
     /**
      * 菜单

@@ -11,33 +11,30 @@
             <dd><a href="#" onclick="loginOut()">退出</a></dd>
         </dl>
     </li>
-    <li class="layui-nav-item to-index"><a href="#">前台首页</a></li>
+    <li class="layui-nav-item to-index"><a href="https://bita.io/" target="_blank">平台首頁</a></li>
 </ul>
 <!--<script type="text/javascript" src="../static/lib/layui/layui.js"></script>-->
 <script type="text/javascript">
-    /*$(function() {
+    $(function() {
         if (USER != null && USER != "") {
             $("#userName").html(USER.userName);
         } else {
-            /!*layer.msg('登陆已失效', {
+            /*layer.msg('登陆已失效', {
                 icon: 5,
                 time: 2000 //2秒关闭（如果不配置，默认是3秒）
             }, function(){
                 window.location.href = "login.html";
-            });*!/
-            window.location.href = "../login.html";
+            });*/
+            window.location.href = URL+"login";
         }
 
-    })*/
+    })
 
     function loginOut() {
         $.ajax({
-            url:URL+"loginOut",
+            url:URL+"signIn",
             type:"get",
             dataType:"json",
-            data:{
-                sessionId:SESSIONID
-            },
             success:function(data){
                 console.log(data);
                 if(data.code == 200) {
@@ -45,14 +42,14 @@
                     clearCookie("SESSIONID");
                     clearCookie("USER");
                     clearCookie("AA");
-                    window.location.href = "../login.html";
+                    window.location.href = URL+"login";
                 } else if(data.code == 404){
                     window.location.href = "404.html";
                 } else if(data.code == 500){
                     window.location.href = "500.html";
                 } else {
                     layer.msg(data.msg,{icon:5});
-                    window.location.href = "../login.html";
+                    window.location.href = URL+"login";
                 }
             },error:function(jqXHR, textStatus, errorThrown) {
                 var data = jqXHR.responseText;

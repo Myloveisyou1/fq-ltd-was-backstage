@@ -108,7 +108,6 @@
             type:"get",
             dataType:"json",
             data:{
-                sessionId:SESSIONID,
                 userName:userName
             },
             success:function(data){
@@ -128,7 +127,7 @@
 
                 } else if (data.code == 209){
                     layer.msg(data.msg,{icon:2});
-                    top.location.href = "../login.html";
+                    top.location.href = URL+"login";
                 } else {
                     layer.msg(data.msg,{icon:2});
                 }
@@ -190,7 +189,6 @@
                 type:"get",
                 dataType:"json",
                 data:{
-                    sessionId:SESSIONID,
                     userName:userNames,
                     tel:phone,
                     email:email,
@@ -200,7 +198,7 @@
                     console.log(data);
                     if(data.code == 200) {
                         layer.msg("修改成功,请在用户列表查看",{icon:6,time:2000},function(){
-                            //location.reload();
+                            location.reload();
                         });
 
                     } else if (data.code == 209){
@@ -227,7 +225,6 @@
                 type:"post",
                 dataType:"json",
                 data:{
-                    sessionId:SESSIONID,
                     userName:userNames,
                     tel:phone,
                     email:email,
@@ -237,12 +234,12 @@
                     console.log(data);
                     if(data.code == 200) {
                         layer.msg("添加成功，请在用户列表查看",{icon:6,time:2000},function(){
-                            //location.reload();
+                            location.reload();
                         });
 
                     } else if (data.code == 209){
                         layer.msg(data.msg,{icon:2});
-                        top.location.href = "../login.html";
+                        top.location.href = URL+"login";
                     } else {
                         layer.msg(data.msg,{icon:2});
                     }
@@ -269,9 +266,6 @@
             type:"get",
             async:false,
             dataType:"json",
-            data:{
-                sessionId:SESSIONID
-            },
             success:function(data){
                 console.log(data);
                 if(data.code == 200) {

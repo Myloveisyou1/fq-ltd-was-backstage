@@ -14,7 +14,7 @@
 var URL = "http://localhost:8081/";
 //var URL = "http://47.98.60.240:8081/";
 var USER =  getCookie("USER")==""?null:JSON.parse( getCookie("USER"));
-//var MENU = getCookie("MENU")==""?null:JSON.parse( getCookie("MENU"));
+var MENU = getCookie("MENU")==""?null:JSON.parse( getCookie("MENU"));
 
 //设置cookie
 function setCookie(c_name, value, expiredays) {

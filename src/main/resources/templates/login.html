@@ -63,11 +63,11 @@
                 if(data.code == 200) {
                     layer.msg("login success",{icon:6});
                     USER = JSON.stringify(data.data.user);
-                    MENU = JSON.stringify(data.data.menu);
-//                     console.log(MENU);
+                    // MENU = JSON.stringify(data.data.menu);
+                    // console.log(MENU);
 //                     setCookie("SESSIONID",SESSIONID,1800*1000);
-// //                  setCookie("MENU",MENU,1800*1000);
-//                     setCookie("USER",USER,1800*1000);
+//                  setCookie("MENU",MENU,1800*1000);
+                    setCookie("USER",USER,1800*1000);
                     window.location.href = URL+"home";
                 } else {
                     layer.msg(data.msg,{icon:5});

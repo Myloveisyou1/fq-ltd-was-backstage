@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
 
     <!-- 公共css+js -->
-    <script src="../static/js/common/base-css.js"></script>
-    <script src="../static/js/common/base-js.js"></script>
+    <script src="js/common/base-css.js"></script>
+    <script src="js/common/base-js.js"></script>
 
 </head>
 
@@ -125,8 +125,7 @@
         </div>
     </form>
 </div>
-<script type="text/javascript" src="../static/js/common/base-code.js"></script>
-<script type="text/javascript" src="../static/js/common/basic.js"></script>
+<script type="text/javascript" src="js/common/base-code.js"></script>
 <script>
     var layer = "";
     layui.use(['layer'],function(){
@@ -149,7 +148,6 @@
             type:"get",
             dataType:"json",
             data:{
-                sessionId:SESSIONID,
                 userName:userName
             },
             success:function(data){
@@ -219,9 +217,6 @@
             type:"get",
             async:false,
             dataType:"json",
-            data:{
-                sessionId:SESSIONID
-            },
             success:function(data){
                 console.log(data);
                 if(data.code == 200) {
@@ -276,7 +271,6 @@
             type:"get",
             dataType:"json",
             data:{
-                sessionId:SESSIONID,
                 userName:userName,
                 tel:tel,
                 email:email
@@ -321,7 +315,6 @@
             type:"get",
             dataType:"json",
             data:{
-                sessionId:SESSIONID,
                 userName:USER.userName,
                 password:password
             },
@@ -335,7 +328,6 @@
                         type:"get",
                         dataType:"json",
                         data:{
-                            sessionId:SESSIONID,
                             userName:USER.userName,
                             password:newPassword
                         },
