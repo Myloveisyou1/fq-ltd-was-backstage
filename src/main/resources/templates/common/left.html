@@ -144,7 +144,7 @@
                 if(data.code == 200) {
                     var parent = "",a = "";
                     for (var i=0;i<MENU.length;i++) {
-                        parent += '<li><a href="javascript:;"><i class="iconfont">'+MENU[i].icon+'</i>' +
+                        parent += '<li><a href="javascript:;" style="color: white;"><i class="iconfont">'+MENU[i].icon+'</i>' +
                                 '<cite>'+MENU[i].menuName+'</cite>' +
                                 '<i class="iconfont nav_right">&#xe697;</i></a>';
                         //遍历二级菜单
@@ -155,7 +155,7 @@
                             for(var j=0;j<menuLists.length;j++) {
                                 if (menuLists[j].menuName.split(";")[1] != 1) {
                                     child += '<li>' +
-                                            '<a _href="'+menuLists[j].url+'">' +
+                                            '<a _href="'+menuLists[j].url+'" style="color: white;">' +
                                             '<i class="iconfont">'+menuLists[j].icon+'</i>'+
                                             '<cite>'+menuLists[j].menuName.split(";")[0]+'</cite>' +
                                             '</a></li>';

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fq.fqltdwasbackstage.mapper.SysConfigMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.fq.fqltdwasbackstage.domain.SysConfig" id="BaseResultMap">
+                    <result property="wasId" column="was_id"/>
+                    <result property="wasType" column="was_type"/>
+                    <result property="wasConfigType" column="was_config_type"/>
+                    <result property="wasNum" column="was_num"/>
+                    <result property="wasSource" column="was_source"/>
+                    <result property="wasStaus" column="was_staus"/>
+                    <result property="wasCreateTime" column="was_create_time"/>
+            </resultMap>
+
+    <select id="pageQueryList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+          <include refid="sysConfigMap"/>
+        from sys_config
+        where 1=1
+                  <if test="Long == String">
+              <if test="wasId != null and was_id.trim() != ''">
+                  was_id = #{wasId}
+              </if>
+          </if>
+            <if test="Long != String">
+                <if test="wasId != null">
+                    was_id = #{wasId}
+                </if>
+            </if>
+                  <if test="String == String">
+              <if test="wasType != null and was_type.trim() != ''">
+                  was_type = #{wasType}
+              </if>
+          </if>
+            <if test="String != String">
+                <if test="wasType != null">
+                    was_type = #{wasType}
+                </if>
+            </if>
+                  <if test="Integer == String">
+              <if test="wasConfigType != null and was_config_type.trim() != ''">
+                  was_config_type = #{wasConfigType}
+              </if>
+          </if>
+            <if test="Integer != String">
+                <if test="wasConfigType != null">
+                    was_config_type = #{wasConfigType}
+                </if>
+            </if>
+                  <if test="Integer == String">
+              <if test="wasNum != null and was_num.trim() != ''">
+                  was_num = #{wasNum}
+              </if>
+          </if>
+            <if test="Integer != String">
+                <if test="wasNum != null">
+                    was_num = #{wasNum}
+                </if>
+            </if>
+                  <if test="String == String">
+              <if test="wasSource != null and was_source.trim() != ''">
+                  was_source = #{wasSource}
+              </if>
+          </if>
+            <if test="String != String">
+                <if test="wasSource != null">
+                    was_source = #{wasSource}
+                </if>
+            </if>
+                  <if test="Integer == String">
+              <if test="wasStaus != null and was_staus.trim() != ''">
+                  was_staus = #{wasStaus}
+              </if>
+          </if>
+            <if test="Integer != String">
+                <if test="wasStaus != null">
+                    was_staus = #{wasStaus}
+                </if>
+            </if>
+                  <if test="Date == String">
+              <if test="wasCreateTime != null and was_create_time.trim() != ''">
+                  was_create_time = #{wasCreateTime}
+              </if>
+          </if>
+            <if test="Date != String">
+                <if test="wasCreateTime != null">
+                    was_create_time = #{wasCreateTime}
+                </if>
+            </if>
+                order by was_id desc
+        <if test="pageNumber != null and pageSize != null">
+            limit #{pageNumber}, #{pageSize}
+        </if>
+    </select>
+
+</mapper>

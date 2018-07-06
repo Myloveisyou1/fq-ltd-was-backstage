@@ -1,5 +1,7 @@
 package com.fq.fqltdwasbackstage.controller;
 
+import com.fq.fqltdwasbackstage.domain.WasAddress;
+import com.fq.fqltdwasbackstage.domain.WasAddressList;
 import com.fq.fqltdwasbackstage.domain.WasDataDictionary;
 import com.fq.fqltdwasbackstage.service.WasDataDictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,36 @@ public class ExcelController {
         Map<String,Object> map = new HashMap<>();
         map.put("bean",wasDataDictionary);
        path = service.findAll(map);
+        return downLoad();
+    }
+
+    /**
+     * 导出地址池列表的Excel
+     * @param wasAddressList
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping("/toExcelForAddressList")
+    public ResponseEntity<InputStreamResource> toExcelForAddressList(WasAddressList wasAddressList) throws IOException {
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("bean",wasAddressList);
+        path = service.findAll(map);
+        return downLoad();
+    }
+
+    /**
+     * 导出地址池明细列表的Excel
+     * @param wasAddress
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping("/toExcelForAddress")
+    public ResponseEntity<InputStreamResource> toExcelForAddress(WasAddress wasAddress) throws IOException {
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("bean",wasAddress);
+        path = service.findAll(map);
         return downLoad();
     }
 

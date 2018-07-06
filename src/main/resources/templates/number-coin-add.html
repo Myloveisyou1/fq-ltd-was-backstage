@@ -14,136 +14,122 @@
 <div class="x-body">
     <form class="layui-form">
         <div class="layui-form-item">
-            <label for="wasBaseCurrency" class="layui-form-label">
-                <span class="x-red">*</span>执行方法
+            <label for="wasBaseCurrency" class="layui-form-label self-label">
+                执行方法
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasBaseCurrency" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasBaseCurrency" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入执行方法" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label for="wasTypes" class="layui-form-label">
                 <span class="x-red">*</span>币种类型
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasTypes" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasTypes" name="wasBaseCurrency" required  lay-verify="required" placeholder="请输入币种类型" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasTokenAddress" class="layui-form-label">
-                <span class="x-red">*</span>代币合约地址
+            <label for="wasTokenAddress" class="layui-form-label self-label">
+                代币合约地址
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasTokenAddress" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasTokenAddress" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入代币合约地址" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasMinConfirm" class="layui-form-label">
-                <span class="x-red">*</span>最小确认数
+            <label for="wasMinConfirm" class="layui-form-label self-label">
+                最小确认数
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasMinConfirm" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasMinConfirm" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入最小确认数" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasBeginBlock" class="layui-form-label">
+            <label for="wasBeginBlock" class="layui-form-label self-label">
                 <span class="x-red">*</span>区块高度
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasBeginBlock" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasBeginBlock" name="wasBaseCurrency" required  lay-verify="required" placeholder="请输入区块高度" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasBlockNum" class="layui-form-label">
-                <span class="x-red">*</span>轮询位数
+            <label for="wasBlockNum" class="layui-form-label self-label">
+                轮询位数
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasBlockNum" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasBlockNum" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入轮询位数" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasGateWay" class="layui-form-label">
-                <span class="x-red">*</span>网关
+            <label for="wasGateWay" class="layui-form-label self-label">
+                网关
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasGateWay" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasGateWay" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入网关" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasPrecision" class="layui-form-label">
-                <span class="x-red">*</span>精度
+            <label for="wasPrecision" class="layui-form-label self-label">
+                精度
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasPrecision" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasPrecision" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入精度" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasZeroGasPrice" class="layui-form-label">
-                <span class="x-red">*</span>归零价格
+            <label for="wasZeroGasPrice" class="layui-form-label self-label">
+                归零价格
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasZeroGasPrice" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasZeroGasPrice" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入归零价格" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasZeroGasLimit" class="layui-form-label">
-                <span class="x-red">*</span>归零限制
+            <label for="wasZeroGasLimit" class="layui-form-label self-label">
+                归零限制
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasZeroGasLimit" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasZeroGasLimit" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入归零限制" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasTransferGasPrice" class="layui-form-label">
-                <span class="x-red">*</span>转账价格
+            <label for="wasTransferGasPrice" class="layui-form-label self-label">
+                转账价格
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasTransferGasPrice" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasTransferGasPrice" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入转账价格" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasTransferGasLimit" class="layui-form-label">
-                <span class="x-red">*</span>转账限制
+            <label for="wasTransferGasLimit" class="layui-form-label self-label">
+                转账限制
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="wasTransferGasLimit" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="wasTransferGasLimit" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入转账限制" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="iconIntroduceUrl" class="layui-form-label">
-                <span class="x-red">*</span>货币介绍URL
+            <label for="iconIntroduceUrl" class="layui-form-label self-label">
+                货币介绍URL
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="iconIntroduceUrl" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="iconIntroduceUrl" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入货币介绍URL" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="blockBrowsersUrl" class="layui-form-label">
-                <span class="x-red">*</span>区块浏览器URL
+            <label for="blockBrowsersUrl" class="layui-form-label self-label">
+                区块浏览器URL
             </label>
-            <div class="layui-input-inline">
-                <input type="text" id="blockBrowsersUrl" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" id="blockBrowsersUrl" name="wasBaseCurrency" required  lay-verify="pass" placeholder="请输入区块浏览器URL" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasStatuss" class="layui-form-label">
+            <label for="wasStatuss" class="layui-form-label self-label">
                 <span class="x-red">*</span>状态
             </label>
-            <div class="layui-input-inline">
+            <div class="layui-input-block">
                 <select name="wasStatuss" id="wasStatuss" lay-verify="required">
                     <option value="0" >禁用</option>
                     <option value="1" >启用</option>
@@ -153,12 +139,19 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="wasRemark" class="layui-form-label">
+            <label for="wasRemark" class="layui-form-label self-label">
                 <span class="x-red">*</span>备注
             </label>
-            <div class="layui-input-inline">
-                <textarea type="text" id="wasRemark" required="" lay-verify="pass"
-                          autocomplete="off" class="layui-input"></textarea>
+            <div class="layui-input-block">
+                <textarea name="desc" id="wasRemark" required  lay-verify="required" placeholder="请输入备注内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="wasSpare" class="layui-form-label self-label">
+                <span class="x-red">*</span>备用标签
+            </label>
+            <div class="layui-input-block">
+                <textarea name="desc" id="wasSpare" required  lay-verify="required" placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item" id="add">
@@ -217,6 +210,7 @@
                     $("#blockBrowsersUrl").val(bean.wasBlockBrowsersUrl);
                     $("#wasStatuss").val(bean.wasStatus);
                     $("#wasRemark").val(bean.wasRemark);
+                    $("#wasSpare").val(bean.wasSpare);
                 }else if (data.code == 209){
                     layer.msg(data.msg,{icon:2});
                     top.location.href = URL+"login";
@@ -252,6 +246,7 @@
         var blockBrowsersUrl = $("#blockBrowsersUrl").val();
         var wasStatuss = $("#wasStatuss").val();
         var wasRemark = $("#wasRemark").val();
+        var wasSpare = $("#wasSpare").val();
         $.ajax({
             url:URL+"generator/wasdatadictionary/saveOrUpdate",
             type:"get",
@@ -274,7 +269,8 @@
                 iconIntroduceUrl:iconIntroduceUrl,
                 blockBrowsersUrl:blockBrowsersUrl,
                 wasStatus:wasStatuss,
-                wasRemark:wasRemark
+                wasRemark:wasRemark,
+                wasSpare:wasSpare
             },success:function (data) {
                 console.log(data);
                 if(data.code == 200) {

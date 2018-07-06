@@ -33,7 +33,7 @@ public interface WasDataDictionaryMapper {
             "was_zero_gas_price wasZeroGasPrice,was_zero_gas_limit wasZeroGasLimit," +
             "was_transfer_gas_price wasTransferGasPrice,was_transfer_gas_limit wasTransferGasLimit," +
             "was_remark wasRemark,was_create_time wasCreateTime,was_last_time wasLastTime,was_coin_introduce_url wasCoinIntroduceUrl," +
-            "was_block_browsers_url wasBlockBrowsersUrl from was_data_dictionary where was_id=#{wasId}")
+            "was_block_browsers_url wasBlockBrowsersUrl,was_spare wasSpare from was_data_dictionary where was_id=#{wasId}")
     WasDataDictionary selectById(@Param("wasId") Integer wasId);
 
     @Insert("insert into was_data_dictionary (#{wasDataDictionary})")

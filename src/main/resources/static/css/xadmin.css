@@ -153,6 +153,10 @@ xblock{
 .self-back{
     background-color: #d2d2d2;
 }
+.self-label{
+    padding: 9px;
+    width: 92px;
+}
 .x-so input.layui-input{
     width: 150px;
 }

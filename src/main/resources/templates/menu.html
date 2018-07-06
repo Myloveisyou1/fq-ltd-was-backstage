@@ -134,7 +134,6 @@
 <div style="display: none;" id="childMenuDiv">
     <xblock>
         <button class="layui-btn" onclick="addParent(2)"><i class="layui-icon"></i>添加</button>
-        <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
     </xblock>
     <table class="layui-table layui-form" id="childMenu">
         <thead>
@@ -167,6 +166,7 @@
     $(function () {
         parent.layer.load(2,{shade:0.3});
         searchMenu();
+        findAllProject();
     });
     /**
      * 查询图标
@@ -335,10 +335,7 @@
                 }
             }
         });
-
-
     }
-
     /**
      * 添加一级菜单
      * */
@@ -352,7 +349,6 @@
         } else if(obj == 2){
             $("#menuType").show();
         }
-        findAllProject();
         layer.open({
             type:1,
             title: '添加菜单',
@@ -411,9 +407,8 @@
                 });
             }
         });
-
     }
-
+    /**查询图标**/
     function showIcon() {
         findIconList();
         layer.open({
@@ -467,7 +462,7 @@
             }
         });
     }
-
+    /**修改菜单**/
     function editMenu(id) {
         layer.load(2,{shade:0.3});
         //查询菜单信息
@@ -559,7 +554,7 @@
             }
         });
     }
-
+    /**添加子菜单**/
     function addChild(id) {
         layer.open({
             type:1,
@@ -571,7 +566,6 @@
         parentCode = id;
         searchChildMenu(id);
     }
-
     /**查询子菜单**/
     function searchChildMenu(id) {
         layer.load(2,{shade:0.3});
@@ -645,7 +639,7 @@
         });
 
     }
-    /*用户-删除*/
+    /**用户-删除*/
     function member_del(id){
 
         layer.confirm('该菜单下的子类也会删除,确认要删除吗？',function(index){

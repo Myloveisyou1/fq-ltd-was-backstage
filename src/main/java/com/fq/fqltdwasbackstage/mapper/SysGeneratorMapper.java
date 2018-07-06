@@ -13,8 +13,6 @@ import java.util.Map;
  * @email sunlightcs@gmail.com
  * @date 2016年12月19日 下午3:32:04
  */
-@Component
-@Mapper
 public interface SysGeneratorMapper {
 	
 	List<Map<String, Object>> queryList(Map<String, Object> map);

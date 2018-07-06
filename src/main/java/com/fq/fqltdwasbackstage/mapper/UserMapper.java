@@ -40,7 +40,7 @@ public interface UserMapper {
      * @return
      */
     @SelectProvider(type = BaseProvider.class,method = "findAllUser")
-    List<User> findAllUser(@Param("userName") String userName);
+    List<User> findAllUser(String userName);
 
     /**
      * 修改信息

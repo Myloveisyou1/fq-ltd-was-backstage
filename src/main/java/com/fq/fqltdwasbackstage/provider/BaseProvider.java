@@ -1,5 +1,7 @@
 package com.fq.fqltdwasbackstage.provider;
 
+import com.fq.fqltdwasbackstage.domain.WasAddress;
+import com.fq.fqltdwasbackstage.domain.WasAddressList;
 import com.fq.fqltdwasbackstage.domain.WasDataDictionary;
 import com.fq.fqltdwasbackstage.domain.common.Pages;
 import com.fq.fqltdwasbackstage.utils.CommonUtil;
@@ -13,6 +15,8 @@ import java.util.Map;
  */
 public class BaseProvider {
 
+
+    /**=======================数字货币管理相关============================================*/
     public String pageQuery(Map<String,Object> params) {
 
         StringBuffer sql = new StringBuffer("SELECT" +
@@ -23,7 +27,7 @@ public class BaseProvider {
                 "was_zero_gas_price wasZeroGasPrice,was_zero_gas_limit wasZeroGasLimit," +
                 "was_transfer_gas_price wasTransferGasLimit,was_transfer_gas_limit wasTransferGasLimit," +
                 "was_remark wasRemark,was_create_time wasCreateTime,was_last_time wasLastTime," +
-                " IFNULL(was_coin_introduce_url,'') wasCoinIntroduceUrl,IFNULL(was_block_browsers_url,'') wasBlockBrowsersUrl" +
+                " IFNULL(was_coin_introduce_url,'') wasCoinIntroduceUrl,IFNULL(was_block_browsers_url,'') wasBlockBrowsersUrl,was_spare wasSpare" +
                 " FROM" +
                 " was_data_dictionary" +
                 " WHERE 1=1");
@@ -96,6 +100,151 @@ public class BaseProvider {
         return sql.toString();
     }
 
+    /**===========================地址池相关======================================================**/
+    /**主体信息**/
+    public String pageQueryWasAddressListList(Map<String,Object> params) {
+
+        StringBuffer sql = new StringBuffer("");
+
+        WasAddressList bean = (WasAddressList)params.get("bean");
+        Pages pages = (Pages) params.get("pages");
+
+        //这里写查询条件
+        if (CommonUtil.isNotEmpty(params.get("wasId"))) {
+            sql.append("was_id = "+params.get("wasId").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasType"))) {
+            sql.append("was_type = "+params.get("wasType").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasAddress"))) {
+            sql.append("was_address = "+params.get("wasAddress").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasExpireTime"))) {
+            sql.append("was_expire_time = "+params.get("wasExpireTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasSource"))) {
+            sql.append("was_source = "+params.get("wasSource").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasRemark"))) {
+            sql.append("was_remark = "+params.get("wasRemark").toString());
+        }
+
+        sql.append(" LIMIT "+pages.getPageSize()*(pages.getPageNumber()-1)+","+pages.getPageSize());
+        return sql.toString();
+    }
+
+    public String pageQueryWasAddressListCount(Map<String,Object> params) {
+
+        StringBuffer sql = new StringBuffer("select count(0) from was_address_list)");
+
+        WasAddressList bean = (WasAddressList)params.get("bean");
+
+        //这里写查询条件
+        if (CommonUtil.isNotEmpty(params.get("wasId"))) {
+            sql.append("was_id = "+params.get("wasId").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasType"))) {
+            sql.append("was_type = "+params.get("wasType").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasAddress"))) {
+            sql.append("was_address = "+params.get("wasAddress").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasExpireTime"))) {
+            sql.append("was_expire_time = "+params.get("wasExpireTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasSource"))) {
+            sql.append("was_source = "+params.get("wasSource").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasRemark"))) {
+            sql.append("was_remark = "+params.get("wasRemark").toString());
+        }
+
+        return sql.toString();
+    }
+    /**详细信息**/
+    public String pageQueryWasAddressList(Map<String,Object> params) {
+
+        StringBuffer sql = new StringBuffer("");
+
+        WasAddress bean = (WasAddress)params.get("bean");
+        Pages pages = (Pages) params.get("pages");
+
+        //这里写查询条件
+        if (CommonUtil.isNotEmpty(params.get("wasId"))) {
+            sql.append("was_id = "+params.get("wasId").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasType"))) {
+            sql.append("was_type = "+params.get("wasType").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasAddress"))) {
+            sql.append("was_address = "+params.get("wasAddress").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasExpireTime"))) {
+            sql.append("was_expire_time = "+params.get("wasExpireTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasBlockNumber"))) {
+            sql.append("was_block_number = "+params.get("wasBlockNumber").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasRemark"))) {
+            sql.append("was_remark = "+params.get("wasRemark").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasCreateTime"))) {
+            sql.append("was_create_time = "+params.get("wasCreateTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasUpdateTime"))) {
+            sql.append("was_update_time = "+params.get("wasUpdateTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasSource"))) {
+            sql.append("was_source = "+params.get("wasSource").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasInitTime"))) {
+            sql.append("was_init_time = "+params.get("wasInitTime").toString());
+        }
+
+        sql.append(" LIMIT "+pages.getPageSize()*(pages.getPageNumber()-1)+","+pages.getPageSize());
+        return sql.toString();
+    }
+
+    public String pageQueryWasAddressCount(Map<String,Object> params) {
+
+        StringBuffer sql = new StringBuffer("select count(0) from was_address)");
+
+        WasAddress bean = (WasAddress)params.get("bean");
+
+        //这里写查询条件
+        if (CommonUtil.isNotEmpty(params.get("wasId"))) {
+            sql.append("was_id = "+params.get("wasId").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasType"))) {
+            sql.append("was_type = "+params.get("wasType").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasAddress"))) {
+            sql.append("was_address = "+params.get("wasAddress").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasExpireTime"))) {
+            sql.append("was_expire_time = "+params.get("wasExpireTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasBlockNumber"))) {
+            sql.append("was_block_number = "+params.get("wasBlockNumber").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasRemark"))) {
+            sql.append("was_remark = "+params.get("wasRemark").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasCreateTime"))) {
+            sql.append("was_create_time = "+params.get("wasCreateTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasUpdateTime"))) {
+            sql.append("was_update_time = "+params.get("wasUpdateTime").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasSource"))) {
+            sql.append("was_source = "+params.get("wasSource").toString());
+        }
+        if (CommonUtil.isNotEmpty(params.get("wasInitTime"))) {
+            sql.append("was_init_time = "+params.get("wasInitTime").toString());
+        }
+
+        return sql.toString();
+    }
 
 
 

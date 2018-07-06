@@ -20,5 +20,5 @@ spring:
 
 # Mybatis配置
 mybatis:
-    basepackage: com.fq.fqltdwasbackstage.mapper
-    xmlLocations: classpath:mapper/**/*.xml
+    type-aliases-package: com.fq.fqltdwasbackstage.mapper
+    mapper-locations: classpath:mapper/*.xml

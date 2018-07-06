@@ -52,13 +52,13 @@
 <!--状态处理-->
 <script type="text/html" id="wasStatus">
     {{#  if(d.wasStatus == 0){ }}
-    <span>禁用</span>
+    <span style="color: red">禁用</span>
     {{# } else if(d.wasStatus == 1){ }}
-    <span>启用</span>
+    <span style="color: green">启用</span>
     {{# } else if(d.wasStatus == 2){ }}
-    <span>禁止提币</span>
+    <span style="color: red">禁止提币</span>
     {{# }} else if(d.wasStatus == 3){ }}
-    <span>开放提币</span>
+    <span style="color: green">开放提币</span>
     {{#  } }}
 </script>
 <script>
@@ -112,21 +112,21 @@
                     ,{field: 'wasBaseCurrency', title: '执行方法',width:120}
                     ,{field: 'wasType', title: '币种类型', width:100,sort: true}
                     ,{field: 'wasTokenAddress', title: '代币合约地址',width:350}
-                    ,{field: 'wasMinConfirm', title: '最小确认数',width:100}
+                    ,{field: 'wasMinConfirm', title: '最小确认数',sort:true,width:110}
                     ,{field: 'xx', title: '最新区块高度', toolbar: '#getNewBlock',width:120}
                     ,{field: 'wasBeginBlock', title: '区块高度', sort: true,width:100}
-                    ,{field: 'wasBlockNum', title: '轮询位数',width:100}
+                    ,{field: 'wasBlockNum', title: '轮询位数',sort: true,width:100}
                     ,{field: 'wasGateWay', title: '网关',width:110}
-                    ,{field: 'wasPrecision', title: '精度',width:60}
-                    ,{field: 'wasZeroGasPrice', title: '归零价格',width:100}
+                    ,{field: 'wasPrecision', title: '精度',sort: true,width:80}
+                    ,{field: 'wasZeroGasPrice', title: '归零价格',sort: true,width:100}
                     ,{field: 'wasZeroGasLimit', title: '归零限制',width:100}
-                    ,{field: 'wasTransferGasPrice', title: '转账价格',width:100}
+                    ,{field: 'wasTransferGasPrice', title: '转账价格',sort: true,width:100}
                     ,{field: 'wasTransferGasLimit', title: '转账限制',width:100}
                     ,{field: 'wasCoinIntroduceUrl', title: '货币介绍URL',templet: '<div><a href="{{d.wasCoinIntroduceUrl}}" class="layui-table-link" target="_blank">{{d.wasCoinIntroduceUrl}}</a></div>'}
                     ,{field: 'wasBlockBrowsersUrl', title: '区块浏览器URL',templet: '<div><a href="{{d.wasBlockBrowsersUrl}}" class="layui-table-link" target="_blank">{{d.wasBlockBrowsersUrl}}</a></div>'}
                     ,{field: 'wasStatus', title: '状态',width:80,templet:'#wasStatus',sort:true}
                     ,{field: 'wasRemark', title: '备注',width:200}
-                    ,{field: 'time', title: '备用标签'}
+                    ,{field: 'wasSpare', title: '备用标签'}
                     ,{field: 'repData', title: '操作',toolbar:'#barDemo',width:100,align:'center'}
                 ]]
                 ,response: {

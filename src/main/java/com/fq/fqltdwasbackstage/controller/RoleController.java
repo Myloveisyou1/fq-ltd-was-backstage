@@ -23,7 +23,7 @@ import java.util.List;
 public class RoleController {
 
     @Autowired
-    private RoleService service;
+    private RoleService roleService;
 
     /**
      * 查询所有角色
@@ -33,7 +33,7 @@ public class RoleController {
     @GetMapping(value = "/findAllRole")
     public Result findAllRole(@RequestParam(value = "roleName",required = false) String roleName) {
 
-        return ResultUtil.success(service.findAllRole(roleName),null);
+        return ResultUtil.success(roleService.findAllRole(roleName),null);
     }
     /**所有角色
      * @param roleId
@@ -42,7 +42,7 @@ public class RoleController {
     @GetMapping(value = "/findRoleById")
     public Result findRoleById(@RequestParam(value = "roleId") Long roleId) {
 
-        return ResultUtil.success(service.findMenuByRole(roleId),null);
+        return ResultUtil.success(roleService.findMenuByRole(roleId),null);
     }
 
     /**
@@ -53,7 +53,7 @@ public class RoleController {
     @GetMapping(value = "/updateRole")
     public Result updateRole(Role role) {
 
-        return ResultUtil.success(service.updateRole(role),null);
+        return ResultUtil.success(roleService.updateRole(role),null);
 
     }
 
@@ -65,7 +65,7 @@ public class RoleController {
     @GetMapping(value = "/addRole")
     public Result addRole(Role role,String menus) {
 
-        return ResultUtil.success(service.addRole(role,menus),null);
+        return ResultUtil.success(roleService.addRole(role,menus),null);
     }
 
     /**
@@ -78,7 +78,7 @@ public class RoleController {
     @GetMapping(value = "/updateRoleMenu")
     public Result updateRomeMenu(Role role,@RequestParam(value = "ymenus") String ymenus,@RequestParam(value = "nmenus")String nmenus) {
 
-        return ResultUtil.success(service.updateRomeMenu(role,ymenus,nmenus),null);
+        return ResultUtil.success(roleService.updateRomeMenu(role,ymenus,nmenus),null);
     }
 
     /**
@@ -88,6 +88,6 @@ public class RoleController {
     @GetMapping(value = "/deleteRole")
     public Result deleteRole(@RequestParam(value = "gid") Long gid) {
 
-        return ResultUtil.success(service.deleteRole(gid),null);
+        return ResultUtil.success(roleService.deleteRole(gid),null);
     }
 }

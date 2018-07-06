@@ -91,4 +91,8 @@ public class WasDataDictionary{
 	 * 区块浏览器URL
 	 */
 	private String wasBlockBrowsersUrl;
+	/**
+	 * 备用标签
+	 */
+	private String wasSpare;
 }
