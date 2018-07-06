@@ -69,6 +69,11 @@ public class IndexController {
         return "/number-coin";
     }
 
+    @GetMapping(value = "/number-coin-add")
+    public String numberCoinAdd() {
+        return "/number-coin-add";
+    }
+
     /**
      * 数字货币监控及预警
      * @return

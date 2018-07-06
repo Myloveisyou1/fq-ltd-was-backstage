@@ -19,410 +19,219 @@
         <a href="">首页</a>
         <a href="">数字货币管理</a>
       </span>
-    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="queryInfo()" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
     <div class="layui-row self-back">
-        <form class="layui-form layui-col-md12 x-so form-sel">
-            <input type="text" id="coinId"  placeholder="请输入货币ID" autocomplete="off" class="layui-input">
-            <input type="text" id="coinPType"  placeholder="请输入币种类型(父)" autocomplete="off" class="layui-input">
-            <input type="text" id="coinCType"  placeholder="请输入币种类型(子)" autocomplete="off" class="layui-input">
-            <button class="layui-btn layui-btn-normal">搜索</button>
+        <form class="layui-form layui-col-md12 x-so form-sel" action="http://localhost:8081/excel/toExcel">
+            <input type="text" name="wasId" id="wasId"  placeholder="请输入货币ID" autocomplete="off" class="layui-input">
+            <input type="text" name="wasType" id="wasType"  placeholder="请输入币种类型" autocomplete="off" class="layui-input">
+            <button type="button" class="layui-btn layui-btn-normal" onclick="queryInfo()">搜索</button>
             <span class="x-right" style="line-height:40px"><button class="layui-btn layui-btn-normal">导出</button></span>
         </form>
     </div>
     <xblock>
-        <span class="x-right" style="line-height:40px"><button class="layui-btn layui-btn-danger">一键禁用</button></span>
+        <button class="layui-btn" onclick="x_admin_show('添加币种','number-coin-add.html')"><i class="layui-icon"></i>添加币种</button>
+        <span class="x-right" style="line-height:40px"><button class="layui-btn layui-btn-danger" onclick="disabledAll()">一键禁用</button></span>
     </xblock>
-    <table class="layui-table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>执行方法</th>
-            <th>币种类型(父)</th>
-            <th>币种类型(子)</th>
-            <th>币种别名</th>
-            <th>代币合约地址</th>
-            <th>最小确认数</th>
-            <th>最新区块高度</th>
-            <th>区块高度</th>
-            <th>轮询位数</th>
-            <th>网关</th>
-            <th>区块手续费</th>
-            <th>实设手续费</th>
-            <th>状态</th>
-            <th>备注</th>
-            <th>货币介绍URL</th>
-            <th>区块浏览器URL</th>
-            <th>备用标签</th>
-            <th>操作</th>
-        </thead>
-        <tbody id="myTable">
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td class="td-manager">
-                    <button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('编辑','admin-edit.html')"><i class="layui-icon"></i>编辑币种</button>
-                    <button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('编辑','admin-edit.html')"><i class="layui-icon"></i>编辑状态</button>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>
-                    <button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('编辑','admin-edit.html')"><i class="layui-icon"></i>编辑币种</button>
-                    <button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('编辑','admin-edit.html')"><i class="layui-icon"></i>编辑状态</button>
-                </td>
-            </tr>
-        </tbody>
+    <table class="layui-table" id="demo" lay-filter="demo">
+
     </table>
-    <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
-    </div>
 </div>
 
-<div id="addProject" style="display: none">
-    <form class="layui-form">
-        <div class="layui-form-item">
-            <label for="project_name" class="layui-form-label">
-                <span class="x-red">*</span>项目名称
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="project_name" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="name_en" class="layui-form-label">
-                <span class="x-red">*</span>英文名称
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="name_en" required="" lay-verify="pass"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-    </form>
-</div>
-
-<script type="text/javascript" src="../static/js/common/base-code.js"></script>
-<script type="text/javascript" src="../static/js/common/basic.js"></script>
+<script type="text/javascript" src="js/common/base-code.js"></script>
+<!--操作-->
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit" onclick="x_admin_show('编辑','number-coin-add.html?wasId={{d.wasId}}')">编辑</a>
+</script>
+<!--获取最新区块高度-->
+<script type="text/html" id="getNewBlock">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">获取最新</a>
+</script>
+<!--状态处理-->
+<script type="text/html" id="wasStatus">
+    {{#  if(d.wasStatus == 0){ }}
+    <span>禁用</span>
+    {{# } else if(d.wasStatus == 1){ }}
+    <span>启用</span>
+    {{# } else if(d.wasStatus == 2){ }}
+    <span>禁止提币</span>
+    {{# }} else if(d.wasStatus == 3){ }}
+    <span>开放提币</span>
+    {{#  } }}
+</script>
 <script>
+    var result = "";
+    var wasId = "";
+    var wasType = "";
     var layer = "";
     layui.use(['layer'],function(){
         layer = layui.layer;
     });
-    // $(function () {
-    //     parent.layer.load(2,{shade:0.3});
-    //     findAllProject();
-    //     parent.layer.closeAll("loading");
-    // });
+    layui.use('table', function(){
+        var table = layui.table;
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                // layer.msg('ID：'+ data.id + ' 的查看操作');
+                layer.load(2,{shade:0.3});
+                getNewBlock(data.wasType);
+            } /*else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.alert('编辑行：<br>'+ JSON.stringify(data));
+            }*/
+        });
+    });
+
+    $(function () {
+        parent.layer.load(2,{shade:0.3});
+        layui.use('table', function(){
+            var table = layui.table;
+
+            result= table.render({
+                elem: '#demo'
+                ,height: 515
+                ,url: URL+"generator/wasdatadictionary/list" //数据接口
+                ,request: {
+                    pageName: 'pageNumber' //页码的参数名称，默认：page
+                    ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+                }
+                ,where:{
+                    wasId:$("#wasId").val(),
+                    wasType:$("#wasType").val()
+                }
+                ,page: true //开启分页
+                ,cols: [[ //表头
+                    {field: 'wasId', title: 'ID', width:50, sort: true, fixed: 'left'}
+                    ,{field: 'wasBaseCurrency', title: '执行方法',width:120}
+                    ,{field: 'wasType', title: '币种类型', width:100,sort: true}
+                    ,{field: 'wasTokenAddress', title: '代币合约地址',width:350}
+                    ,{field: 'wasMinConfirm', title: '最小确认数',width:100}
+                    ,{field: 'xx', title: '最新区块高度', toolbar: '#getNewBlock',width:120}
+                    ,{field: 'wasBeginBlock', title: '区块高度', sort: true,width:100}
+                    ,{field: 'wasBlockNum', title: '轮询位数',width:100}
+                    ,{field: 'wasGateWay', title: '网关',width:110}
+                    ,{field: 'wasPrecision', title: '精度',width:60}
+                    ,{field: 'wasZeroGasPrice', title: '归零价格',width:100}
+                    ,{field: 'wasZeroGasLimit', title: '归零限制',width:100}
+                    ,{field: 'wasTransferGasPrice', title: '转账价格',width:100}
+                    ,{field: 'wasTransferGasLimit', title: '转账限制',width:100}
+                    ,{field: 'wasCoinIntroduceUrl', title: '货币介绍URL',templet: '<div><a href="{{d.wasCoinIntroduceUrl}}" class="layui-table-link" target="_blank">{{d.wasCoinIntroduceUrl}}</a></div>'}
+                    ,{field: 'wasBlockBrowsersUrl', title: '区块浏览器URL',templet: '<div><a href="{{d.wasBlockBrowsersUrl}}" class="layui-table-link" target="_blank">{{d.wasBlockBrowsersUrl}}</a></div>'}
+                    ,{field: 'wasStatus', title: '状态',width:80,templet:'#wasStatus',sort:true}
+                    ,{field: 'wasRemark', title: '备注',width:200}
+                    ,{field: 'time', title: '备用标签'}
+                    ,{field: 'repData', title: '操作',toolbar:'#barDemo',width:100,align:'center'}
+                ]]
+                ,response: {
+                    statusName: 'code' //数据状态的字段名称，默认：code
+                    ,statusCode: 200 //成功的状态码，默认：0
+                    ,msgName: 'hint' //状态信息的字段名称，默认：msg
+                    ,countName: 'totalCount' //数据总数的字段名称，默认：count
+                    ,dataName: 'data' //数据列表的字段名称，默认：data
+                }
+                ,done: function(res, curr, count){
+                    //如果是异步请求数据方式，res即为你接口返回的信息。
+                    //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                    console.log(res);
+
+                    //得到当前页码
+                    console.log(curr);
+
+                    //得到数据总量
+                    console.log(count);
+                }
+            });
+
+        });
+        parent.layer.closeAll("loading");
+    })
 
     /**
-     * 添加项目
+     * 条件查询币种信息
      * */
-    function addProject() {
-
-        layer.open({
-            type:1,
-            title: '添加项目',
-            content: $("#addProject"),
-            btn:['添加','取消'],
-            yes: function (index,layero) {
-
-                var projectName = $("#project_name").val();
-                var nameEn = $("#name_en").val();
-
-                if(projectName == "" || nameEn == "") {
-                    layer.msg("信息未填写完整",{icon:5});
-                    return;
-                }
-
-                $.ajax({
-                    url:URL+"project/addProject",
-                    type:"get",
-                    dataType:"json",
-                    data:{
-                        sessionId:SESSIONID,
-                        projectName:projectName,
-                        nameEn:nameEn
-                    },
-                    success:function(data){
-                        console.log(data);
-                        if(data.code == 200) {
-                            layer.msg("添加成功,请在项目列表查看",{icon:6,time:2000},function(){
-                                location.reload();
-                            });
-                        } else if (data.code == 209){
-                            layer.msg(data.msg,{icon:2});
-                            top.location.href = "../login.html";
-                        } else {
-                            layer.msg(data.msg,{icon:2});
-                        }
-
-                    },error:function(jqXHR, textStatus, errorThrown) {
-                        var data = jqXHR.responseText;
-                        if(jqXHR.status == 404){
-                            top.location.href = "404.html";
-                        } else if(jqXHR.status == 500){
-                            top.location.href = "500.html";
-                        } else {
-                            layer.msg(data.msg,{icon:2});
-                        }
-                    }
-                });
+    function queryInfo() {
+        wasId = $("#wasId").val();
+        wasType = $("#wasType").val();
+        //第一个实例
+        result.reload({
+            where: { //设定异步数据接口的额外参数，任意设
+                wasId:$("#wasId").val(),
+                wasType:$("#wasType").val()
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
             }
         });
-
     }
 
     /**
-     * 修改项目
-     * */
-    function updateProject(gid,projectName,nameEn) {
-
-        $("#project_name").val(projectName);
-        $("#name_en").val(nameEn);
-        layer.open({
-            type:1,
-            title: '修改项目',
-            content: $("#addProject"),
-            btn:['修改','取消'],
-            yes: function (index,layero) {
-
-                var projectNames = $("#project_name").val();
-                var nameEns = $("#name_en").val();
-
-                if(projectNames == "" || nameEns == "") {
-                    layer.msg("信息未填写完整",{icon:5});
-                    return;
-                }
-
-                $.ajax({
-                    url:URL+"project/updateProject",
-                    type:"get",
-                    dataType:"json",
-                    data:{
-                        sessionId:SESSIONID,
-                        gid:gid,
-                        projectName:projectNames,
-                        nameEn:nameEns
-                    },
-                    success:function(data){
-                        console.log(data);
-                        if(data.code == 200) {
-                            layer.msg("修改成功,请在项目列表查看",{icon:6,time:2000},function(){
-                                location.reload();
-                            });
-                        } else if(data.code == 404){
-                            window.location.href = "404.html";
-                        } else if(data.code == 500){
-                            window.location.href = "500.html";
-                        } else {
-                            layer.msg(data.msg,{icon:2});
-                        }
-
-                    },error:function(jqXHR, textStatus, errorThrown) {
-                        var data = jqXHR.responseText;
-                        if(jqXHR.status == 404){
-                            top.location.href = "404.html";
-                        } else if(jqXHR.status == 500){
-                            top.location.href = "500.html";
-                        } else {
-                            layer.msg(data.msg,{icon:2});
-                        }
-                    }
-                });
-            }
-        });
-
-
-    }
-    /*项目-停用/启用*/
-    function role_stop(gid,type){
-
-        var tishi = type == 0?"启用":"禁用";
-        layer.confirm('确认要'+tishi+'吗？',function(index){
-
+     * 一键禁用/启用
+     */
+    function disabledAll() {
+        var obj = "0";
+        layer.confirm('确认要禁用吗？',function(index){
             if (index) {
                 $.ajax({
-                    url:URL+"project/updateProject",
-                    type:"get",
-                    dataType:"json",
-                    data:{
-                        sessionId:SESSIONID,
-                        gid:gid,
-                        status:type
-                    },
-                    success:function(data){
+                    url: URL + "generator/wasdatadictionary/disabledAll",
+                    type: "get",
+                    dataType: "json",
+                    data: {
+                        way: way
+                    }, success: function (data) {
                         console.log(data);
-                        if(data.code == 200) {
-                            layer.msg(tishi+"成功",{icon:6});
-                            location.reload();
-                        } else if (data.code == 209){
-                            layer.msg(data.msg,{icon:2});
-                            top.location.href = "../login.html";
+                        if (data.code == 200) {
+                            var type = "";
+                            if (obj == 0) {
+                                type = "禁用成功";
+                            } else {
+                                type = "启用成功";
+                            }
+                            layer.msg(type + ",请刷新列表查看", {icon: 6, time: 2000}, function () {
+                                location.reload();
+                            });
+                        } else if (data.code == 209) {
+                            layer.msg(data.msg, {icon: 2});
+                            top.location.href = URL + "login";
                         } else {
-                            layer.msg(data.msg,{icon:2});
+                            layer.msg(data.msg, {icon: 2});
                         }
-
-                    },error:function(jqXHR, textStatus, errorThrown) {
+                    }, error: function (jqXHR, textStatus, errorThrown) {
                         var data = jqXHR.responseText;
-                        if(jqXHR.status == 404){
+                        if (jqXHR.status == 404) {
                             top.location.href = "404.html";
-                        } else if(jqXHR.status == 500){
+                        } else if (jqXHR.status == 500) {
                             top.location.href = "500.html";
                         } else {
-                            layer.msg(data.msg,{icon:2});
+                            layer.msg(data.msg, {icon: 2});
                         }
                     }
                 });
             }
-
-        });
+        })
     }
 
-    /*项目-删除*/
-    function member_del(gid){
-        layer.confirm('删除不可恢复,确认要删除吗？',function(index){
-            if (index) {
-                $.ajax({
-                    url:URL+"project/deleteProject",
-                    type:"get",
-                    dataType:"json",
-                    data:{
-                        sessionId:SESSIONID,
-                        gid:gid,
-                    },
-                    success:function(data){
-                        console.log(data);
-                        if(data.code == 200) {
-                            layer.msg("删除成功",{icon:6});
-                            location.reload();
-                        } else if (data.code == 209){
-                            layer.msg(data.msg,{icon:2});
-                            top.location.href = "../login.html";
-                        } else {
-                            layer.msg(data.msg,{icon:2});
-                        }
-
-                    },error:function(jqXHR, textStatus, errorThrown) {
-                        var data = jqXHR.responseText;
-                        if(jqXHR.status == 404){
-                            top.location.href = "404.html";
-                        } else if(jqXHR.status == 500){
-                            top.location.href = "500.html";
-                        } else {
-                            layer.msg(data.msg,{icon:2});
-                        }
-                    }
-                });
-            }
-        });
-    }
-
-    /**
-     * 查询所有项目
-     **/
-    function findAllProject() {
-        var projectName = $("#projectName").val();
+    function getNewBlock(wasType) {
         $.ajax({
-            url:URL+"project/findAllProject",
+            url:URL+"generator/wasdatadictionary/getNewHeight",
             type:"get",
-            async:false,
-            dataType:"json",
             data:{
-                sessionId:SESSIONID,
-                projectName:projectName
+                wasType:wasType
             },
             success:function(data){
+                layer.closeAll("loading");
                 console.log(data);
-                if(data.code == 200) {
-                    var res = data.data;
-                    if(res.length > 0) {
-                        var html = "";
-                        for(var i=0;i<res.length;i++) {
-                            var a = "",b = "",c = res[i].gid,d = res[i].gid+",'"+res[i].projectName+"','"+res[i].nameEn+"'";
-                            if(res[i].status == 0) {
-                                a = '<span class="layui-btn layui-btn-normal layui-btn-mini">启用</span>';
-                                b = '<a onclick="role_stop('+c+',1)" href="javascript:;"  title="启用"><i class="layui-icon">&#xe601;</i></a>';
-                            } else if(res[i].status == 1) {
-                                a = '<span class="layui-btn layui-btn-normal layui-btn-mini layui-btn-disabled">禁用</span>';
-                                b = '<a onclick="role_stop('+c+',0)" href="javascript:;"  title="停用"><i class="layui-icon">&#xe62f;</i></a>';
-                            }
-                            console.log(b);
-                            html += '<tr><td><div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="2"><i class="layui-icon">&#xe605;</i></div></td>'+
-                                '<td>'+(i+1)+'</td>' +
-                                '<td>'+res[i].projectName+'</td>' +
-                                '<td>'+res[i].nameEn+'</td>' +
-                                '<td>'+res[i].createTime+'</td>' +
-                                '<td>'+res[i].updateTime+'</td>' +
-                                '<td class="td-status">'+a+'</td>' +
-                                '<td class="td-manage">'+b+
-                                '<a title="编辑"  onclick="updateProject('+d+')" href="javascript:;"><i class="layui-icon">&#xe642;</i></a>'+
-                                '<a title="删除" onclick="member_del('+c+')" href="javascript:;"><i class="layui-icon">&#xe640;</i></a></td></tr>';
-                        }
-
-                    } else {
-                        html += '<tr><td colspan="100">暂无数据</td></tr>';
-                    }
-                    $("#totalCount").html("共有数据："+data.totalCount+"条");
-                    $("#myTable").html(html);
-                } else if (data.code == 209){
-                    parent.layer.msg(data.msg,{icon:2});
-                    top.location.href = "../login.html";
-                } else {
-                    parent.layer.msg(data.msg,{icon:2});
-                }
-            },error:function(jqXHR, textStatus, errorThrown) {
-                var data = jqXHR.responseText;
-                if(jqXHR.status == 404){
-                    top.location.href = "404.html";
-                } else if(jqXHR.status == 500){
-                    top.location.href = "500.html";
-                } else {
-                    parent.layer.msg(data.msg,{icon:2});
-                }
-            }
+                layer.msg(data.data.msg+"区块高度为:"+data.data.blockNumber);
+                queryInfo();
+            },error: function (jqXHR, textStatus, errorThrown) {
+                layer.closeAll("loading");
+             }
         });
     }
 </script>

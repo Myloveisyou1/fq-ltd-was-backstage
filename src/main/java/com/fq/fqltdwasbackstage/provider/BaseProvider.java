@@ -1,6 +1,10 @@
 package com.fq.fqltdwasbackstage.provider;
 
+import com.fq.fqltdwasbackstage.domain.WasDataDictionary;
+import com.fq.fqltdwasbackstage.domain.common.Pages;
 import com.fq.fqltdwasbackstage.utils.CommonUtil;
+
+import java.util.Map;
 
 /**
  * @Descript:
@@ -8,6 +12,92 @@ import com.fq.fqltdwasbackstage.utils.CommonUtil;
  * @Date: create in 2018/5/30 0030 11:46
  */
 public class BaseProvider {
+
+    public String pageQuery(Map<String,Object> params) {
+
+        StringBuffer sql = new StringBuffer("SELECT" +
+                " was_id wasId,was_base_currency wasBaseCurrency,was_type wasType," +
+                "was_begin_block wasBeginBlock,was_block_num wasBlockNum,was_gate_way wasGateWay," +
+                "was_token_address wasTokenAddress,was_min_confirm wasMinConfirm," +
+                "was_status wasStatus,was_precision wasPrecision," +
+                "was_zero_gas_price wasZeroGasPrice,was_zero_gas_limit wasZeroGasLimit," +
+                "was_transfer_gas_price wasTransferGasLimit,was_transfer_gas_limit wasTransferGasLimit," +
+                "was_remark wasRemark,was_create_time wasCreateTime,was_last_time wasLastTime," +
+                " IFNULL(was_coin_introduce_url,'') wasCoinIntroduceUrl,IFNULL(was_block_browsers_url,'') wasBlockBrowsersUrl" +
+                " FROM" +
+                " was_data_dictionary" +
+                " WHERE 1=1");
+
+        WasDataDictionary bean = (WasDataDictionary)params.get("bean");
+        Pages pages = (Pages) params.get("pages");
+
+        if (CommonUtil.isNotEmpty(bean.getWasBaseCurrency())) {
+            sql.append(" AND was_base_currency = '"+bean.getWasBaseCurrency()+"'");
+        }
+        if (CommonUtil.isNotEmpty(bean.getWasId())) {
+            sql.append(" AND was_id = "+bean.getWasId());
+        }
+        if (CommonUtil.isNotEmpty(bean.getWasType())) {
+            sql.append(" AND was_type = '"+bean.getWasType()+"'");
+        }
+
+        sql.append(" ORDER BY was_type").append(" LIMIT "+pages.getPageSize()*(pages.getPageNumber()-1)+","+pages.getPageSize());
+        return sql.toString();
+    }
+
+    public String pageQueryCount(Map<String,Object> params) {
+
+        StringBuffer sql = new StringBuffer("select count(0) from was_data_dictionary where 1=1");
+
+        WasDataDictionary bean = (WasDataDictionary)params.get("bean");
+
+        if (CommonUtil.isNotEmpty(bean.getWasBaseCurrency())) {
+            sql.append(" AND was_base_currency = '"+bean.getWasBaseCurrency()+"'");
+        }
+        if (CommonUtil.isNotEmpty(bean.getWasId())) {
+            sql.append(" AND was_id = "+bean.getWasId());
+        }
+        if (CommonUtil.isNotEmpty(bean.getWasType())) {
+            sql.append(" AND was_type = '"+bean.getWasType()+"'");
+        }
+
+        return sql.toString();
+    }
+
+    public String findAll(Map<String,Object> params) {
+
+        StringBuffer sql = new StringBuffer("SELECT" +
+                " was_id wasId,was_base_currency wasBaseCurrency,was_type wasType," +
+                "was_begin_block wasBeginBlock,was_block_num wasBlockNum,was_gate_way wasGateWay," +
+                "was_token_address wasTokenAddress,was_min_confirm wasMinConfirm," +
+                "was_status wasStatus,was_precision wasPrecision," +
+                "was_zero_gas_price wasZeroGasPrice,was_zero_gas_limit wasZeroGasLimit," +
+                "was_transfer_gas_price wasTransferGasLimit,was_transfer_gas_limit wasTransferGasLimit," +
+                "was_remark wasRemark,was_create_time wasCreateTime,was_last_time wasLastTime," +
+                " IFNULL(was_coin_introduce_url,'') wasCoinIntroduceUrl,IFNULL(was_block_browsers_url,'') wasBlockBrowsersUrl" +
+                " FROM" +
+                " was_data_dictionary" +
+                " WHERE 1=1");
+
+        WasDataDictionary bean = (WasDataDictionary)params.get("bean");
+        Pages pages = (Pages) params.get("pages");
+
+        if (CommonUtil.isNotEmpty(bean.getWasBaseCurrency())) {
+            sql.append(" AND was_base_currency = '"+bean.getWasBaseCurrency()+"'");
+        }
+        if (CommonUtil.isNotEmpty(bean.getWasId())) {
+            sql.append(" AND was_id = "+bean.getWasId());
+        }
+        if (CommonUtil.isNotEmpty(bean.getWasType())) {
+            sql.append(" AND was_type = '"+bean.getWasType()+"'");
+        }
+
+        sql.append(" ORDER BY was_type");
+        return sql.toString();
+    }
+
+
+
 
     /**
      * 用户相关操作===============================================

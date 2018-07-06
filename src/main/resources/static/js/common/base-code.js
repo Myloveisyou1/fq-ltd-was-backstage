@@ -11,6 +11,7 @@
  */
 
 
+var WASAPI = "http://10.45.0.54:8765";//远程接口调用地址
 var URL = "http://localhost:8081/";
 //var URL = "http://47.98.60.240:8081/";
 var USER =  getCookie("USER")==""?null:JSON.parse( getCookie("USER"));
